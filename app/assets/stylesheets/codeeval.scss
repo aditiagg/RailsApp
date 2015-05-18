@@ -1,0 +1,132 @@
+// Place all the styles related to the codeeval controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+	background-color: #f8f8f8;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.myNavbar{
+	border: none;
+	background-color: #63b1c6;
+	box-shadow: 0 3px 12px rgba(0,0,0,0.23),0 3px 12px rgba(0,0,0,0.16);
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: #fff;
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:active, .navbar-inverse .navbar-nav>.open>a:focus {
+  color: #000;
+  background-color: #63b1c6;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:active, .navbar-inverse .navbar-nav>li>a:focus {
+  color: #000;
+  background-color: #63b1c6;
+}
+
+.navbar-inverse .navbar-brand {
+  color: white;
+}
+
+.breadcrumb{
+	background-color: #f8f8f8;
+}
+
+.panel .gray{
+	background-color: #f8f8f8;
+}
+
+.panel-default>.panel-heading {
+	background-color: #fff;
+	padding: 18px;
+}
+
+.panel-body{
+	padding: 15px;
+	background-color: #f8f8f8;
+}
+
+.problem-statement, .problem-time-counter, .hint-panel, .company-panel, .code-editor {
+  box-shadow: 0 1.5px 4px rgba(0,0,0,0.24),0 1.5px 6px rgba(0,0,0,0.12);
+  border: 0;
+}
+
+.markdown-content blockquote {
+  border-left: 10px solid rgba(128,128,128,0.075);
+  background-color: rgba(128,128,128,0.05);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 15px 20px;
+  font-size: 16px;
+}
+
+.problem-time-counter {
+  background-color: #F3F7F8;
+  color: #63b1c6;
+  font-size: 16px;
+}
+
+.code-editor>* .btn {
+  box-shadow: 0 1.5px 4px rgba(0,0,0,0.24),0 1.5px 6px rgba(0,0,0,0.12);
+  border: 0;
+  border-radius: 5px;
+  text-align: center;
+  width: 110px;
+}
+
+.code-editor>* .btn:hover {
+  box-shadow: 0 3px 12px rgba(0,0,0,0.23),0 3px 12px rgba(0,0,0,0.16);
+}
+
+.successful-submissions>.panel-body{
+  background-color: #57DEB5 !important;
+  color: #FFFFFF;
+}
+
+.successful-submissions .panel-body .submission-count {
+  font-size: 26px;
+}
+
+.successful-submissions .panel-body {
+  font-size: 18px;
+}
+
+#footer {
+  	background-color: #eeeeee;
+  	position: relative;
+  	bottom: 0;
+  	width: 100%;
+  	height: 140px;
+  	font-size: 15px;
+  	margin-top: 20px;
+}
+
+#footer .container{
+	padding: 10px;
+}
+
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+  margin-left: -5px;
+}
+
+#footer-pages li {
+  border-right: 1px solid #333;
+  margin: 10px 0;
+  padding: 0 20px;
+}
+
+#footer-pages li:last-child {
+  border-right: none;
+}
+
+#footer-social a {
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #333;
+  border-radius: 25px;
+  padding: 10px;
+}

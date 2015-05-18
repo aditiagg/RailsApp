@@ -1,0 +1,351 @@
+<!Doctype HTML>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Code Evaluator</title>
+		<!-- Bootstrap css -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+		<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+		<!-- Project css -->
+		<link rel="stylesheet" href="css/codeEval.css">
+
+		<style type="text/css" media="screen">
+		    #editor { 
+		        position: absolute;
+		        top: 0;
+		        right: 0;
+		        bottom: 0;
+		        left: 0;
+		    }
+		</style>
+	</head>
+	<body>
+		<!-- navbar -->
+		<nav class="navbar navbar-inverse navbar-static-top myNavbar">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">
+						Code Evaluator
+					</a>
+				</div>
+				<!-- navbar collapse -->
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="#">
+				                <span class="glyphicon glyphicon-comment"></span>
+				                <span class="user-score header-items">Help</span>
+				            </a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="glyphicon glyphicon-flag"></span>
+                				<span class="puzzle-problems header-items">Puzzles</span>
+                			</a>
+						</li>
+						<li class="dropdown">
+							<a id="nav-dLabel" data-target="#" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+								User Name
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="nav-dLabel">
+				                <li><a href="#">Settings</a></li>
+				                <li class="divider"></li>
+				            	<li><a href="#" data-method="delete" rel="nofollow">Log Out</a></li>
+				            </ul>
+						</li>
+					</ul>
+				</div>
+				<!-- navbar collapse end-->
+			</div>
+		</nav>
+		<!-- navbar end -->
+
+		<!-- main content -->
+		<div class="container">
+			<ol class="breadcrumb">
+				<span class="glyphicon glyphicon-circle-arrow-left pull-left" style="margin-right: 10px;"></span>
+          		<li><a href="#">Dashboard</a></li>
+          		<li><a href="#">Arrays</a></li>
+      			<li class="#">Plus1</li>
+			</ol>
+			<div class="row">
+				<!-- Problem Statement Panel -->
+				<div class="col-xs-12">
+					<div class="panel panel-default gray problem-statement">
+						<!-- Panel Heading -->
+						<div class="panel-heading">
+							<h3 class="panel-title"><strong>PLUS1</strong></h3>
+						</div>
+						<!-- Panel Heading end -->
+
+						<!-- Panel Body -->
+						<div class="panel-body">
+							<div id="problem-content" class="markdown-content">
+								<p>
+									Given a non-negative number represented as an array of digits,
+								</p>
+								<p>
+									add 1 to the number ( increment the number represented by the digits ).
+								</p>
+								<p>
+									The digits are stored such that the most significant digit is at the head of the list.
+								</p>
+								<p>
+									<strong>Example:</strong>
+								</p>
+								<p>	
+									If the vector has <code class="highlighter-rouge">[1, 2, 3]</code>
+								</p>
+								<p>
+									the returned vector should be <code class="highlighter-rouge">[1, 2, 4]</code>
+								</p>
+								<p>
+									as <code class="highlighter-rouge">123 + 1 = 124</code>.
+								</p>
+								<blockquote>
+									<p>
+										<strong>NOTE:</strong> Certain things are intentionally left unclear in this question which you should practice asking the interviewer.<br />
+										For example, for this problem, following are some good questions to ask :
+									</p>
+									<ul>
+									    <li>
+									    	<p>
+									    		<strong>Q :</strong> Can the input have 0’s before the most significant digit. Or in other words, is <code class="highlighter-rouge">0 1 2 3</code> a valid input ?
+									    	</p>
+									    </li>
+									    <li>
+									    	<p>
+									    		<strong>A :</strong> For the purpose of this question, <strong>YES</strong>
+									    	</p>
+									    </li>
+									    <li>
+									    	<p>
+									    		<strong>Q :</strong> Can the output have 0’s before the most significant digit ? Or in other words, is <code class="highlighter-rouge">0 1 2 4</code> a valid output ?
+									    	</p>
+									    </li>
+									    <li>
+									    	<p>
+									    		<strong>A :</strong> For the purpose of this question, <strong>NO</strong>. Even if the input has zeroes before the most significant digit.
+									    	</p>
+									    </li>
+									</ul>
+								</blockquote>
+							</div>
+						</div>
+						<!-- Panel Body end -->
+					</div>
+				</div>
+				<!-- Problem Statement Panel end-->
+				
+				<!-- Coding Panel -->
+				<div class="col-xs-12 col-md-9">
+					<!-- Timer Panel -->
+					<div class="panel panel-default problem-time-counter">
+						<div class="panel-body">
+							<div id="problem-timer" class="problem-timer pull-left">
+								<span class="glyphicon glyphicon-time timer-icon"></span>
+				                <span class="hours">1</span>
+				                <span class="seperator">:</span>
+				                <span class="minutes">23</span>
+				                <span class="seperator">:</span>
+				                <span class="seconds">24</span>
+							</div>
+							<div class="pull-right">
+								<div style="display: inline-block; margin-right: 20px">
+									Current Possible Score:
+									<span id="current_score">200</span>
+								</div>
+								<div style="display: inline-block">
+									Maximum Score: 250
+									<span class="glyphicon timer-icon glyphicon-info-sign" style="margin-left: 10px"></span>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>			
+					<!-- Timer Panel end -->
+
+					<!-- Code Panel -->
+					<form class="edit_problem" id="edit_problem_66" action="/" >
+    					<div class="panel panel-default code-editor">
+      						<div class="panel-heading">
+        						<div class="pull-left" style="line-height: 32px; margin-left: 2.2em"><strong>
+          							<span style="margin-right: 1.1em">Time Limit: <span id="time-limit">3</span> Sec</span>
+          							<span style="margin-left: 1.1em">Memory Limit: <span id="memory-limit">25</span> MB</span></strong>
+        						</div>
+        						<div class="pull-right">
+          							<select class="form-control" name="programming_language_id" id="select-language">
+                						<option value="11" >C (gcc-4.8)</option>
+                						<option value="44" selected>C++11 (gcc-4.8)</option>
+                						<option value="4" >Python (python-2.7)</option>
+                						<option value="511" >Java 8 (oracle-jdk-1.8)</option>
+          							</select>
+        						</div>
+        					<div class="clearfix"></div>
+      					</div>
+<% file = File.open("/home/shakti/aditi/demo2/app/assets/javascripts/template1.txt", "rb") %>
+<% contents = file.read  %>
+      					<div style="position:relative; min-height:300px">
+      						<div id="editor">vector<int> Solution::plusOne(vector<int> &A) {
+    
+    int flag = 0;
+    if(len == -1){
+       
+        flag = 1;
+    }
+<%= contents%>
+   
+</div>
+	      					</div>
+
+
+
+      					</div>
+					    <div class="panel-footer">
+					        <div class="btn-group">
+					        	<input type="button" class="btn btn-info" value="Save" id="problem-save-btn" data-url="/save-solution/"/>
+					          	<input type="button" class="btn btn-danger" value="Reset" id="problem-reset-btn" data-url="/delete-solution/" />
+					        </div>
+					        <span id="action_message" style="margin-left: 15px"></span>
+					        <div class="btn-group pull-right">
+					          	<input type="submit" class="btn btn-danger" value="Submit" />
+					          	<input type="submit" class="btn btn-info" value="Test"/>
+					        </div>
+					        <div class="clearfix"></div>
+					      </div>
+					    </div>
+					</form>
+					<!-- Code Panel end -->
+				</div>
+				<!-- Coding Panel end-->
+				
+				<!-- Hints Panel -->
+				<div class="col-xs-12 col-md-3">
+				    <!-- Hint panel -->
+				    <div class="panel panel-default hint-panel">
+		        	    <div class="panel-heading">
+		            		<h3 class="panel-title"><strong>Hints</strong></h3>
+		            	</div>
+		            	<ul class="list-group">
+		                	<li class="list-group-item">
+		                		<a href="#">Solution Approach</a>
+		                        <i class="pull-right fa fa-lock glyphicon-info" style="font-size: 22px"></i>
+		                    </li>
+		                    <li class="list-group-item">
+		                        <a href="#">Complete Solution</a>
+		                        <i class="pull-right fa fa-lock glyphicon-info" style="font-size: 22px"></i>
+		                    </li>
+		            	</ul>
+		            </div>
+					<!-- hint panel end -->
+
+		            <!-- submission panel -->
+		            <div class="panel panel-success successful-submissions">
+		            	<div class="panel-body">
+		              		<span class="submission-count">140</span> successful submissions.
+		            	</div>
+		            </div>
+		            <!-- submission panel end -->
+					
+					<!-- Frnds panel -->
+		            <div class="panel panel-default social-rank-panel friend-with-solution">
+		                <div class="panel-heading">
+		                	<h3 class="panel-title"><strong>Friends who solved this</strong></h3>
+		                </div>
+		                <ul class="list-group">
+		                    <li class="list-group-item fb-frnd">
+		                        <span class="badge"></span>
+		                        <div class="frnd-image-ct" data-original-title="Utkarsh Pathrabe">
+		                    	    <img  src="http://graph.facebook.com/483415871807262/picture" height="38" width="38" alt="Utkarsh Pathrabe">
+		                        </div>
+		                        <div class="frnd-name">Utkarsh Pathrabe</div>
+		                      </li>
+		                </ul>
+		            </div>
+		            <!-- Frnds panel end -->
+					
+					<!-- Asked in Panel -->
+		            <div class="panel-group">
+		            	<div class="panel panel-default company-panel">
+		              		<div class="panel-heading">
+		                		<h3 class="panel-title"><strong>Asked In:</strong></h3>
+		              		</div>
+
+		              		<ul class="list-group">
+		                    	<li class="list-group-item">Google</li>
+		              		</ul>
+		            	</div>
+		            </div>
+		            <!-- Asked in Panel end -->
+		    	</div>
+				<!-- Hints Panel end -->
+			</div>
+		</div>
+		<!-- Main content end -->
+		
+		<!-- footer -->
+		<section id="footer" class="section">
+		  	<div class="container"><strong>
+		    	<div class="row text-center" style="padding: 10px">
+		        	Join us on IRC at
+		        	<a target="_blank" href="https://kiwiirc.com/client/irc.freenode.com/?nick=abhimanyu_siwach#interviewbit">#interviewbit</a>
+		        	on freenode for bugs, help or suggestions.
+		    	</div>
+			    <div class="row text-center" id="footer-pages">
+			    	<ul class="list-inline">
+			        	<li><a href="#">About Us</a></li>
+			        	<li><a href="#">FAQ</a></li>
+			        	<li><a href="#">Contact Us</a></li>
+			        	<li><a href="#">Terms</a></li>
+			        	<li><a href="#">Privacy Policy</a></li>
+			        </ul>
+			    </div>
+			    <div class="row text-center" style="margin-top: 10px" id="footer-social">
+			        <ul class="list-inline">
+			            <li>
+			            	<a target="_blank" href="https://www.facebook.com/interviewbit">
+			              		<i class="fa fa-facebook"></i>
+			              		<span style="padding-left: 8px">Like Us</span>
+			            	</a>
+			          	</li>
+			          	<li>
+			            	<a target="_blank" href="https://twitter.com/interview_bit">
+			              		<i class="fa fa-twitter"></i>
+			              		<span style="padding-left: 8px">Follow Us</span>
+			            	</a>
+			          	</li>
+			          	<li>
+			            	<a target="_blank" href="mailto:hello@interviewbit.com">
+			              		<i class="fa fa-envelope-o"></i>
+			              		<span style="padding-left: 8px">Email</span>
+			            	</a>
+			          	</li>
+			        </ul>
+			    </div></strong>
+		    </div>
+		</section>
+		<!-- footer end -->
+
+		<!-- Jquery -->
+		<script src="/home/shakti/aditi/demo2/app/assets/javascripts/jquery.js"></script>
+	    <!-- Bootstrap js -->
+	    <script src="/home/shakti/aditi/demo2/app/assets/javascripts/bootstrap.min.js"></script>
+		
+		<!-- text editor -->
+	    <script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+	    <script>
+	        var editor = ace.edit("editor");
+	        editor.setTheme("ace/theme/monokai");
+	        editor.getSession().setMode("ace/mode/c_cpp");
+	    </script>
+	</body>	
+</html>
